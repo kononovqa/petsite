@@ -6,7 +6,7 @@ class Texts:
         self.txt_main_text = ft.Text(value='',
                                      font_family='Arial',
                                      size=20,
-                                     color=ft.colors.WHITE)
+                                     color=ft.Theme.primary_color_dark)
 
     def txt_header_main(self):
         self.txt_main_text.value = 'Главная'
