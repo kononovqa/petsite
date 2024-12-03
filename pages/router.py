@@ -15,6 +15,6 @@ class Router:
         }
         self.body = ft.Container(content=self.routes['/'])
 
-    async def route_change(self, route):
+    def route_change(self, route):
         self.body.content = self.routes[route.route]
-        await self.body.update_async()
+        self.body.update()

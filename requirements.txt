@@ -1,4 +1,6 @@
-flet == 0.24.1
+flet == 0.25.1
+flet-web == 0.25.1
+flet-cli == 0.25.1
 flet-core == 0.24.1
-flet-runtime == 0.24.1
-fastapi == 0.115.4
+fastapi == 0.115.5
+urllib3 == 2.2.3
