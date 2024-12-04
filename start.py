@@ -16,11 +16,13 @@ async def main(page: ft.Page):
     page.title = "Project N"
     page.horizontal_alignment = "center"
     page.theme_mode = "dark"
-    page.theme = Theme().dark_theme
     page.bgcolor = "#1D1A20"
     page.scroll = 'AUTO'
     myRouter = Router(page)
     page.on_route_change = myRouter.route_change
+
+    page.dark_theme = Theme().dark_theme
+    page.theme = Theme().light_theme
 
     page.add(myRouter.body)
     page.go('/')

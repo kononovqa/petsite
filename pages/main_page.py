@@ -4,9 +4,9 @@ from components.button.icon_button import IconButtons
 from components.button.text_button import TextButtons
 from components.icon.icon import Icons
 from components.stack.stack import Stacks
-from components.theme.theme import Theme
 from components.progress_bar.progress_bar import ProgressBars
 from components.container.container import Containers
+from components.text.text import Texts
 
 
 def main_page(page):
@@ -20,12 +20,10 @@ def main_page(page):
     async def change_theme(e):
         if page.theme_mode == "light":
             page.theme_mode = "dark"
-            page.dark_theme = Theme().dark_theme
             page.bgcolor = "#1D1A20"
 
         elif page.theme_mode == "dark":
             page.theme_mode = "light"
-            page.theme = Theme().light_theme
             page.bgcolor = "#E5E6E8"
 
         button_switch_theme.icon = Icons().icon_light_theme \
@@ -77,130 +75,245 @@ def main_page(page):
         toolbar_height=60,
         title_spacing=0)
 
-
-    row_cards = ft.Row([
+    row_cards = ft.Column([
+        ft.Row(height=22),
+        ft.Row([
             ft.Stack([
                 ft.Container(
-                    bgcolor=ft.colors.RED,
+                    content=ft.Image(src='1.jpg', fit=ft.ImageFit.CONTAIN),
+                    bgcolor=ft.Colors.ON_SECONDARY,
+                    border_radius=12,
+                    border=ft.border.all(0.5, ft.Colors.PRIMARY),
                     width=220,
                     height=220),
+
                 ft.Container(
-                    bgcolor=ft.colors.GREY,
+                    content=ft.Stack([
+                        ft.Container(Texts().txt_name_card(),
+                                     width=220,
+                                     height=60,
+                                     alignment=ft.alignment.center,
+                                     top=1),
+                        ft.Container(
+                            content=ft.Row([
+                                ft.CircleAvatar(foreground_image_src='bordo.jpg',
+                                                 height=30,
+                                                 width=30),
+                                ft.CircleAvatar(foreground_image_src='garage.png',
+                                                height=30,
+                                                width=30),
+                                ft.CircleAvatar(content=ft.Text('13',
+                                                                color=ft.Colors.PRIMARY),
+                                                bgcolor=ft.Colors.OUTLINE,
+                                                height=30,
+                                                width=30),
+                                ft.CircleAvatar(content=ft.Text('1',
+                                                                color=ft.Colors.PRIMARY),
+                                                bgcolor=ft.Colors.OUTLINE,
+                                                height=30,
+                                                width=30),
+                                ft.CircleAvatar(content=ft.Text('70',
+                                                                color=ft.Colors.PRIMARY),
+                                                bgcolor=ft.Colors.OUTLINE,
+                                                height=30,
+                                                width=30),
+                                ft.CircleAvatar(content=ft.Text('0',
+                                                                color=ft.Colors.PRIMARY),
+                                                bgcolor=ft.Colors.OUTLINE,
+                                                height=30,
+                                                width=30),
+                            ], spacing=5, alignment=ft.MainAxisAlignment.CENTER,
+                            ),
+                             height=50,
+                             width=220,
+                             bottom=0)
+                    ]),
+                    bgcolor=ft.Colors.ON_SECONDARY,
+                    border_radius=12,
+                    border=ft.border.all(0.5, ft.Colors.PRIMARY),
                     width=220,
                     height=100,
                     bottom=0)
                 ],
             width=220,
-            height=320,
-            col={"xs": 6, "sm": 6, "md": 4, "xl": 2, 'xxl': 2},
-            alignment=ft.alignment.top_center,
+            height=332,
             ),
             ft.Stack([
                 ft.Container(
-                    bgcolor=ft.colors.GREEN,
+                    content=ft.Image(src='2.jpg', fit=ft.ImageFit.CONTAIN),
+                    bgcolor=ft.Colors.ON_SECONDARY,
+                    border_radius=12,
+                    border=ft.border.all(0.5, ft.Colors.PRIMARY),
                     width=220,
                     height=220),
                 ft.Container(
-                    bgcolor=ft.colors.GREY,
+                    content=ft.Stack([
+                        ft.Container(Texts().txt_name_card_2(),
+                                     width=220,
+                                     height=60,
+                                     alignment=ft.alignment.center,
+                                     top=1),
+                        ft.Container(
+                            content=ft.Row([
+                                ft.CircleAvatar(foreground_image_src='bordo.jpg',
+                                                 height=30,
+                                                 width=30),
+                                ft.CircleAvatar(foreground_image_src='garage.png',
+                                                height=30,
+                                                width=30),
+                                ft.CircleAvatar(content=ft.Text('13',
+                                                                color=ft.Colors.PRIMARY),
+                                                bgcolor=ft.Colors.OUTLINE,
+                                                height=30,
+                                                width=30),
+                                ft.CircleAvatar(content=ft.Text('1',
+                                                                color=ft.Colors.PRIMARY),
+                                                bgcolor=ft.Colors.OUTLINE,
+                                                height=30,
+                                                width=30),
+                                ft.CircleAvatar(content=ft.Text('70',
+                                                                color=ft.Colors.PRIMARY),
+                                                bgcolor=ft.Colors.OUTLINE,
+                                                height=30,
+                                                width=30),
+                                ft.CircleAvatar(content=ft.Text('0',
+                                                                color=ft.Colors.PRIMARY),
+                                                bgcolor=ft.Colors.OUTLINE,
+                                                height=30,
+                                                width=30),
+                            ], spacing=5, alignment=ft.MainAxisAlignment.CENTER,
+                            ),
+                             height=50,
+                             width=220,
+                             bottom=0)
+                    ]),
+                    bgcolor=ft.Colors.ON_SECONDARY,
+                    border_radius=12,
+                    border=ft.border.all(0.5, ft.Colors.PRIMARY),
                     width=220,
                     height=100,
                     bottom=0)
                     ],
                 width=220,
-                height=320,
-                col={"xs": 6, "sm": 6, "md": 4, "xl": 2, 'xxl': 2},
+                height=332,
                 alignment=ft.alignment.top_center,
             ),
 
             ft.Stack([
                 ft.Container(
-                    bgcolor=ft.colors.BLUE,
+                    content=ft.Image(src='3.jpg', fit=ft.ImageFit.CONTAIN),
+                    bgcolor=ft.Colors.ON_SECONDARY,
+                    border_radius=12,
+                    border=ft.border.all(0.5, ft.Colors.PRIMARY),
                     width=220,
                     height=220),
                 ft.Container(
-                    bgcolor=ft.colors.GREY,
+                    bgcolor=ft.Colors.ON_SECONDARY,
+                    border_radius=12,
+                    border=ft.border.all(0.5, ft.Colors.PRIMARY),
                     width=220,
                     height=100,
                     bottom=0)
             ],
                 width=220,
-                height=320,
-                col={"xs": 6, "sm": 6, "md": 4, "xl": 2, 'xxl': 2},
+                height=332,
                 alignment=ft.alignment.top_center,
             ),
             ft.Stack([
                 ft.Container(
-                    bgcolor=ft.colors.WHITE,
+                    content=ft.Image(src='4.jpg', fit=ft.ImageFit.CONTAIN),
+                    bgcolor=ft.Colors.ON_SECONDARY,
+                    border_radius=12,
+                    border=ft.border.all(0.5, ft.Colors.PRIMARY),
                     width=220,
                     height=220),
                 ft.Container(
-                    bgcolor=ft.colors.GREY,
+                    bgcolor=ft.Colors.ON_SECONDARY,
+                    border_radius=12,
+                    border=ft.border.all(0.5, ft.Colors.PRIMARY),
                     width=220,
                     height=100,
                     bottom=0)
             ],
                 width=220,
-                height=320,
-                col={"xs": 6, "sm": 6, "md": 4, "xl": 2, 'xxl': 2},
-                alignment=ft.alignment.top_center,
-            ),
-
-            ft.Stack([
-                ft.Container(
-                    bgcolor=ft.colors.PURPLE,
-                    width=220,
-                    height=220),
-                ft.Container(
-                    bgcolor=ft.colors.GREY,
-                    width=220,
-                    height=100,
-                    bottom=0)
-            ],
-                width=220,
-                height=320,
-                col={"xs": 6, "sm": 6, "md": 4, "xl": 2, 'xxl': 2},
+                height=332,
                 alignment=ft.alignment.top_center,
             ),
 
             ft.Stack([
                 ft.Container(
-                    bgcolor=ft.colors.ORANGE,
+                    content=ft.Image(src='5.jpg', fit=ft.ImageFit.CONTAIN),
+                    bgcolor=ft.Colors.ON_SECONDARY,
+                    border_radius=12,
+                    border=ft.border.all(0.5, ft.Colors.PRIMARY),
                     width=220,
                     height=220),
                 ft.Container(
-                    bgcolor=ft.colors.GREY,
+                    bgcolor=ft.Colors.ON_SECONDARY,
+                    border_radius=12,
+                    border=ft.border.all(0.5, ft.Colors.PRIMARY),
                     width=220,
                     height=100,
                     bottom=0)
             ],
                 width=220,
-                height=320,
-                col={"xs": 6, "sm": 6, "md": 4, "xl": 2, 'xxl': 2},
+                height=332,
                 alignment=ft.alignment.top_center,
             ),
 
             ft.Stack([
                 ft.Container(
-                    bgcolor=ft.colors.CYAN,
+                    content=ft.Image(src='6.jpg', fit=ft.ImageFit.CONTAIN),
+                    bgcolor=ft.Colors.ON_SECONDARY,
+                    border_radius=12,
+                    border=ft.border.all(0.5, ft.Colors.PRIMARY),
                     width=220,
                     height=220),
                 ft.Container(
-                    bgcolor=ft.colors.GREY,
+                    bgcolor=ft.Colors.ON_SECONDARY,
+                    border_radius=12,
+                    border=ft.border.all(0.5, ft.Colors.PRIMARY),
                     width=220,
                     height=100,
                     bottom=0)
             ],
                 width=220,
-                height=320,
-                col={"xs": 6, "sm": 6, "md": 4, "xl": 2, 'xxl': 2},
+                height=332,
+                alignment=ft.alignment.top_center,
+            ),
+
+            ft.Stack([
+                ft.Container(
+                    content=ft.Image(src='7.jpg', fit=ft.ImageFit.CONTAIN),
+                    bgcolor=ft.Colors.ON_SECONDARY,
+                    border_radius=12,
+                    border=ft.border.all(0.5, ft.Colors.PRIMARY),
+                    width=220,
+                    height=220),
+                ft.Container(
+                    bgcolor=ft.Colors.ON_SECONDARY,
+                    border_radius=12,
+                    border=ft.border.all(0.5, ft.Colors.PRIMARY),
+                    width=220,
+                    height=100,
+                    bottom=0)
+            ],
+                width=220,
+                height=332,
                 alignment=ft.alignment.top_center,
             ),
         ],
+        wrap=True,
         width=1490,
         vertical_alignment=ft.alignment.center,
         alignment=ft.MainAxisAlignment.CENTER,
         spacing=24,
-        run_spacing=24)
+        run_spacing=24)],
+
+        horizontal_alignment=ft.CrossAxisAlignment.CENTER,
+        spacing=0,
+        run_spacing=0
+    )
     content = row_cards
 
     def resize(width, height):
