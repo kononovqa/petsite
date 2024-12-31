@@ -23,7 +23,7 @@ class Texts:
         return self.txt_main_text
 
     def txt_name_card(self):
-        self.txt_card_text.value = 'Домик крутой'
+        self.txt_card_text.value = 'Вася'
         return self.txt_card_text
 
     def txt_name_card_2(self):
