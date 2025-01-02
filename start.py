@@ -21,6 +21,11 @@ async def main(page: ft.Page):
     myRouter = Router(page)
     page.on_route_change = myRouter.route_change
 
+    page.fonts = {
+        "NotoSansBold": "fonts/NotoSans-Bold.ttf",
+        "NotoSansRegular": "fonts/NotoSans-Regular.ttf",
+    }
+
     page.dark_theme = Theme().dark_theme
     page.theme = Theme().light_theme
 
