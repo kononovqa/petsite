@@ -1,3 +1,5 @@
+import random
+
 import flet as ft
 
 
@@ -8,11 +10,9 @@ class Texts:
                                      size=22,
                                      color=ft.Theme.primary_color_dark)
 
-        self.txt_card_text = ft.Text(value='',
-                                     weight=ft.FontWeight.W_600,
-                                     font_family='Rubik',
-                                     size=20,
-                                     color=ft.Theme.primary_color_dark)
+        self.txt_card_name_text = ft.Text(value='',
+                                          size=23,
+                                          color=ft.Theme.primary_color_dark)
 
     def txt_header_main(self):
         self.txt_main_text.value = 'Главная'
@@ -23,9 +23,19 @@ class Texts:
         return self.txt_main_text
 
     def txt_name_card(self):
-        self.txt_card_text.value = 'Вася'
-        return self.txt_card_text
+        list_names = ['Вася', 'Дафна', 'Степа']
+        self.txt_card_name_text.value = random.choice(list_names)
+        self.txt_card_name_text.font_family = 'NotoSansBold'
+        return self.txt_card_name_text
 
-    def txt_name_card_2(self):
-        self.txt_card_text.value = '1234567890 123456'
-        return self.txt_card_text
+    def txt_description_card(self):
+        list_description = ['Я вася проказник, у меня грустное лицо но '
+                            'веселый характер',
+                            'Дафна веселый корги, который не против поиграть с '
+                            'твоим ботинком)',
+                            'Степа дружелюбный парень, обожает бегать за мячиком по утрам'
+                            ]
+        self.txt_card_name_text.value = random.choice(list_description)
+        self.txt_card_name_text.size = 14
+        self.txt_card_name_text.font_family = 'NotoSansRegular'
+        return self.txt_card_name_text

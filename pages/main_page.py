@@ -1,4 +1,6 @@
 import copy
+import random
+
 import flet as ft
 
 from components.button.icon_button import IconButtons
@@ -11,7 +13,6 @@ from components.text.text import Texts
 
 
 def main_page(page):
-
     async def go_main_page(e):
         page.go('/')
 
@@ -59,7 +60,7 @@ def main_page(page):
 
     row_button_switch_theme = ft.Row([button_switch_theme],
                                      height=59,
-                                     width=int(page.width)-20,
+                                     width=int(page.width) - 20,
                                      alignment=ft.MainAxisAlignment.END,
                                      vertical_alignment=ft.alignment.center)
 
@@ -77,17 +78,17 @@ def main_page(page):
         title_spacing=0)
 
     row_elements = ft.Row([],
-        wrap=True,
-        width=1490,
-        vertical_alignment=ft.alignment.center,
-        alignment=ft.MainAxisAlignment.CENTER,
-        spacing=24,
-        run_spacing=24)
+                          wrap=True,
+                          width=1490,
+                          vertical_alignment=ft.alignment.center,
+                          alignment=ft.MainAxisAlignment.CENTER,
+                          spacing=24,
+                          run_spacing=24)
 
     def next_pict(e):
         index = e.control.data
         count = int(list_images_object[index].src.split('.')[0])
-        list_images_object[index].src = f'{count+1}.jpg'
+        list_images_object[index].src = f'{count + 1}.jpg'
         list_move_right_object[index].data = index
         page.update()
 
@@ -105,16 +106,69 @@ def main_page(page):
     move_left.on_click = prev_pict
 
     image = ft.Image(src=f'',
-                     right=1,
-                     left=1,
-                     bottom=1,
-                     top=1)
+                     fit=ft.ImageFit.COVER,
+                     width=220,
+                     height=220,
+                     border_radius=9,
+                     )
+
+    icon_right = ft.CircleAvatar(foreground_image_src='grey.png')
+
+    def color_text_picker(age: int, age_end: int):
+        if age <= age_end/3:
+            return '#77FF80' # green
+        elif age <= age_end/3*2:
+            return '#F7FF6D' # yellow
+        else:
+            return '#FF638A' # red
+
+    txt_age = ft.Text(value='',
+                      font_family='NotoSansBold',
+                      size=18)
+
+
+    type_animal = {'cat': 15, 'dog': 20}
 
     list_images_object = []
     list_move_right_object = []
     list_move_left_object = []
+    list_keys = []
+    end_age=0
 
     for a in range(7):
+        random_agr = random.choice(['agr_green.png', 'agr_yellow.png', 'agr_red.png'])
+        image_agr = ft.CircleAvatar(foreground_image_src=random_agr,
+                                    bottom=0,
+                                    left=0,
+                                    width=30,
+                                    height=30,
+                                    offset=(0.18, -0.18))
+
+        random_age = random.randint(1, 20)
+
+        for key, _ in type_animal.items():
+            list_keys.append(key)
+            random_type = random.choice(list_keys)
+            end_age = type_animal[random_type]
+
+        color = color_text_picker(random_age, end_age)
+        txt_age = copy.deepcopy(txt_age)
+        txt_age.color = color
+        txt_age.value = random_age
+
+        container_txt_age = ft.Container(txt_age, alignment=ft.alignment.center,
+                                         width=30,
+                                         height=30)
+
+        icon_stack_right = ft.Stack([icon_right,
+                                     container_txt_age],
+                                    right=1,
+                                    bottom=1,
+                                    width=30,
+                                    height=30,
+                                    offset=(-0.18, -0.18),
+                                    )
+
         stack_animals = ft.Stack(width=220, height=332)
 
         image = copy.deepcopy(image)
@@ -129,66 +183,48 @@ def main_page(page):
         move_left.data = a
         list_move_left_object.append(move_left)
 
+        random_color = random.choice(['#68E3FF', '#FF68F2'])
+
         container_pict_animals = ft.Container(
-                        ft.Stack([image,
-                                         move_right,
-                                         move_left],
-                                         width=220,
-                                         height=220),
-                        bgcolor=ft.Colors.ON_SECONDARY,
-                        border_radius=12,
-                        border=ft.border.all(0.5, ft.Colors.PRIMARY),
-                        width=220,
-                        height=220)
+            ft.Stack([image,
+                      move_right,
+                      move_left,
+                      icon_stack_right,
+                      image_agr],
+                     width=220,
+                     height=220),
+            padding=0,
+            margin=0,
+            bgcolor=ft.Colors.ON_SECONDARY,
+            border_radius=12,
+            border=ft.border.all(2, random_color),
+            width=220,
+            height=220)
 
         container_description_animals = (
             ft.Container(
-                        content=ft.Stack([
-                            ft.Container(Texts().txt_name_card(),
-                                         width=220,
-                                         height=60,
-                                         alignment=ft.alignment.center,
-                                         top=1),
-                            ft.Container(
-                                content=ft.Row([
-                                    ft.CircleAvatar(foreground_image_src='bordo.jpg',
-                                                     height=30,
-                                                     width=30),
-                                    ft.CircleAvatar(foreground_image_src='garage.png',
-                                                    height=30,
-                                                    width=30),
-                                    ft.CircleAvatar(content=ft.Text('13',
-                                                                    color=ft.Colors.PRIMARY),
-                                                    bgcolor=ft.Colors.OUTLINE,
-                                                    height=30,
-                                                    width=30),
-                                    ft.CircleAvatar(content=ft.Text('1',
-                                                                    color=ft.Colors.PRIMARY),
-                                                    bgcolor=ft.Colors.OUTLINE,
-                                                    height=30,
-                                                    width=30),
-                                    ft.CircleAvatar(content=ft.Text('70',
-                                                                    color=ft.Colors.PRIMARY),
-                                                    bgcolor=ft.Colors.OUTLINE,
-                                                    height=30,
-                                                    width=30),
-                                    ft.CircleAvatar(content=ft.Text('0',
-                                                                    color=ft.Colors.PRIMARY),
-                                                    bgcolor=ft.Colors.OUTLINE,
-                                                    height=30,
-                                                    width=30),
-                                ], spacing=5, alignment=ft.MainAxisAlignment.CENTER,
-                                ),
-                                 height=50,
+                content=ft.Stack([
+                    ft.Container(Texts().txt_name_card(),
                                  width=220,
-                                 bottom=0)
-                        ]),
-                        bgcolor=ft.Colors.ON_SECONDARY,
-                        border_radius=12,
-                        border=ft.border.all(0.5, ft.Colors.PRIMARY),
-                        width=220,
-                        height=100,
-                        bottom=0))
+                                 height=35,
+                                 alignment=ft.alignment.center,
+                                 ),
+                    ft.Container(Texts().txt_description_card(),
+                                 width=200,
+                                 height=60,
+                                 margin=ft.Margin(left=6,
+                                                  right=6,
+                                                  top=0,
+                                                  bottom=3),
+                                 alignment=ft.alignment.center,
+                                 bottom=1),
+                ]),
+                bgcolor=ft.Colors.ON_SECONDARY,
+                border_radius=12,
+                border=ft.border.all(2, random_color),
+                width=220,
+                height=100,
+                bottom=0))
 
         stack_animals.controls.append(container_pict_animals)
         stack_animals.controls.append(container_description_animals)
@@ -207,11 +243,10 @@ def main_page(page):
         horizontal_divider_header.width = width - 40
         row_button_switch_theme.width = width - 20
 
-
     def page_resized(e):
         width_page = int(e.width)
         height_page = int(e.height)
-        resize(width = width_page, height=height_page)
+        resize(width=width_page, height=height_page)
         page.update()
 
     resize(int(page.width), int(page.height))
