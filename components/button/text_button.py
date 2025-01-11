@@ -15,3 +15,11 @@ class TextButtons:
     def get_button_contacts(self):
         self.text_button.content = Texts().txt_header_contacts()
         return self.text_button
+
+    def get_button_pets(self):
+        self.text_button.content = Texts().txt_header_pets()
+        return self.text_button
+
+    def get_button_help(self):
+        self.text_button.content = Texts().txt_header_help()
+        return self.text_button

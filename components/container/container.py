@@ -8,3 +8,7 @@ class Containers:
             width=100,
             height=1,
             bgcolor="#857d7f")
+
+        self.container_txt_age = ft.Container(alignment=ft.alignment.center,
+                                              width=30,
+                                              height=30)
