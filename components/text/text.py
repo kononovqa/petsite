@@ -8,7 +8,7 @@ from config.settings import ADDRESS, PHONE, CALENDAR
 class Texts:
     def __init__(self):
         self.txt_main_text = ft.Text(value='',
-                                     font_family='Arial',
+                                     font_family='NotoSans',
                                      size=22,
                                      color=ft.Theme.primary_color_dark)
 
@@ -21,12 +21,12 @@ class Texts:
                                size=18)
 
         self.txt_main_text = ft.Text(value='',
-                                     font_family='Arial',
+                                     font_family='NotoSans',
                                      size=20,
                                      color=ft.Theme.primary_color_dark)
 
         self.txt_side_text = ft.Text(value='',
-                                     font_family='Arial',
+                                     font_family='NotoSans',
                                      size=16,
                                      color=ft.Theme.primary_color_dark)
 
@@ -44,6 +44,10 @@ class Texts:
 
     def txt_header_help(self):
         self.txt_main_text.value = 'Помочь'
+        return self.txt_main_text
+
+    def txt_header_info(self):
+        self.txt_main_text.value = 'Информация'
         return self.txt_main_text
 
     def txt_name_card(self):
@@ -83,3 +87,11 @@ class Texts:
     def txt_side_time_work(self):
         self.txt_side_text.value = CALENDAR
         return self.txt_side_text
+
+    def txt_quest(self):
+        self.txt_main_text.value = ('Что такое что? Или где такое где? '
+                                    'Как быть если не быть?')
+        self.txt_main_text.text_align = ft.TextAlign.CENTER
+        self.txt_main_text.width = 425
+        #self.txt_main_text.color = '#5ae3e6'
+        return self.txt_main_text

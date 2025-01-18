@@ -71,7 +71,7 @@ def contacts_page(page):
         page.update()
 
     resize(int(page.width), int(page.height))
-    page.on_resized = page_resized
+    #page.on_resized = page_resized
 
     row_content = Columns().row_cards
     row_content.controls = [row_txt_main_address,
@@ -80,5 +80,4 @@ def contacts_page(page):
         ft.Row([yandex_map],
                wrap=True,
                alignment=ft.MainAxisAlignment.CENTER)]
-
     return row_content

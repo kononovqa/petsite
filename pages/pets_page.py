@@ -120,7 +120,7 @@ def pets_page(page):
             margin=0,
             bgcolor=ft.Colors.ON_SECONDARY,
             border_radius=12,
-            border=ft.border.all(2, random_color),
+            border=ft.border.all(1.5, random_color),
             width=220,
             height=220)
 
@@ -144,7 +144,7 @@ def pets_page(page):
                 ]),
                 bgcolor=ft.Colors.ON_SECONDARY,
                 border_radius=12,
-                border=ft.border.all(2, random_color),
+                border=ft.border.all(1, random_color),
                 width=220,
                 height=100,
                 bottom=0))

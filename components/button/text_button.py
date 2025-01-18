@@ -23,3 +23,7 @@ class TextButtons:
     def get_button_help(self):
         self.text_button.content = Texts().txt_header_help()
         return self.text_button
+
+    def get_button_info(self):
+        self.text_button.content = Texts().txt_header_info()
+        return self.text_button
