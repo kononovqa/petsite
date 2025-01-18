@@ -1,5 +1,11 @@
 import flet as ft
 
+from pages.info_page import info_page
+from pages.contacts_page import contacts_page
+from pages.help_page import help_page
+from pages.pets_page import pets_page
+from pages.info_page import info_page
+
 from components.button.icon_button import IconButtons
 from components.button.text_button import TextButtons
 from components.icon.icon import Icons
@@ -8,6 +14,7 @@ from components.progress_bar.progress_bar import ProgressBars
 from components.container.container import Containers
 from components.row.row import Rows
 from components.appbar.appbar import AppBars
+from components.text.text import Texts
 
 
 def main_page(page):
@@ -22,6 +29,9 @@ def main_page(page):
 
     async def go_help_page(e):
         page.go('/help')
+
+    async def go_info_page(e):
+        page.go('/info')
 
     async def change_theme(e):
         if page.theme_mode == "light":
@@ -48,11 +58,15 @@ def main_page(page):
     button_help = TextButtons().get_button_help()
     button_help.on_click = go_help_page
 
+    button_info = TextButtons().get_button_info()
+    button_info.on_click = go_info_page
+
     row_header = Rows().row_header
     vertical_divider = ProgressBars().vertical_divider
     row_header.controls = [button_main, vertical_divider,
                            button_pets, vertical_divider,
                            button_help, vertical_divider,
+                           button_info, vertical_divider,
                            button_contacts]
 
     button_switch_theme = IconButtons().get_button_switch_theme()
@@ -87,8 +101,9 @@ def main_page(page):
         width_page = int(e.width)
         height_page = int(e.height)
         resize(width=width_page, height=height_page)
+        info_page(page, width_page, height_page)
         page.update()
+
 
     resize(int(page.width), int(page.height))
     page.on_resized = page_resized
-
